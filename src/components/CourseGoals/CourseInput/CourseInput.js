@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from '../../UI/Button/Button';
-import './CourseInput.css';
+// {using styled components instead} import './CourseInput.css';
 
 const FormControl = styled.div`
   margin: 0.5rem 0;
@@ -15,7 +15,7 @@ const FormControl = styled.div`
 & input {
   display: block;
   width: 100%;
-  border: 1px solid #ccc;
+  border: 1px solid ${props => (props.invalid ? 'red' : '#ccc')};
   font: inherit;
   line-height: 1.5rem;
   padding: 0 0.25rem;
@@ -59,10 +59,17 @@ const CourseInput = props => {
 
   return (
     <form onSubmit={formSubmitHandler}>
-      <div className={`form-control ${!isValid ? 'invalid' : ''}`}>
+      {//USING STYLED COMPONENTS INSTEAD. HENCE, FORMCONTROL INSTEAD OF DIV
+
+        <FormControl invalid={!isValid}>
+          <label >Goals</label>
+          <input type="text" onChange={goalInputChangeHandler} />
+        </FormControl>
+
+     /* <div className={`form-control ${!isValid ? 'invalid' : ''}`}>
         <label >Goals</label>
         <input type="text" onChange={goalInputChangeHandler} />
-      </div>
+      </div> */}
       <Button type="submit">Add Goal</Button>
     </form>
   );
