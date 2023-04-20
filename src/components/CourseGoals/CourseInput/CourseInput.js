@@ -63,7 +63,7 @@ const CourseInput = props => {
         //   <input type="text" onChange={goalInputChangeHandler} />
         // </FormControl>
 
-        <div className={`form-control ${!isValid ? 'invalid' : ''}`}>
+        <div className={`${styles['form-control']} ${!isValid && styles.invalid} `}>
           <label >Goals</label>
           <input type="text" onChange={goalInputChangeHandler} />
         </div>}
